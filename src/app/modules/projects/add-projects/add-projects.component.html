@@ -1,0 +1,47 @@
+<p>add-projects works!</p>
+<form [formGroup]="formGroup">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput
+           formControlName="name"
+           id ="form-input-name">
+
+          <!-- #usernameNgModel="ngModel"-->
+
+    <!--<mat-error *ngIf="usernameNgModel.invalid">
+      <span *ngIf="usernameNgModel.errors.required">username is required</span>
+    </mat-error> -->
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+  <mat-label>Description</mat-label>
+    <input matInput
+           formControlName="description"
+           id ="form-input-description">
+  </mat-form-field>
+  <br>
+    <mat-form-field appearance="fill">
+  <mat-label>Responsable</mat-label>
+      <mat-select
+           formControlName="Responsable"
+           id ="form-input-Responsable">
+        <mat-option *ngFor="let responsable of responsables" [value]="responsable">{{responsable.username}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+
+
+  <br>
+
+  <mat-form-field appearance="fill">
+  <mat-label>Team</mat-label>
+  <mat-select
+         formControlName="team"
+         id ="form-input-team" multiple >
+    <mat-option *ngFor="let developer of developers" [value]="developer">{{developer.username}}</mat-option>
+
+  </mat-select>
+  </mat-form-field>
+
+
+</form>

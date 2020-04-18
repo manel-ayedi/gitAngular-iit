@@ -1,0 +1,74 @@
+<p>Add user </p>
+<form #userForm="ngForm">
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput [(ngModel)]="user.username"
+           name="username"
+           required
+           #usernameNgModel="ngModel"
+           id ="form-input-username">
+    <mat-error *ngIf="usernameNgModel.invalid">
+      <span *ngIf="usernameNgModel.errors.required">username is required</span>
+    </mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput [(ngModel)]="user.password"
+           name="password"
+           required
+           minlength="8"
+           #passwordNgModel="ngModel"
+           #passwordDom
+           id ="form-input-password"
+           type="password" >
+    <mat-error *ngIf="passwordNgModel.invalid">
+      <span *ngIf="passwordNgModel.errors.required">username is required</span>
+      <span *ngIf="passwordNgModel.errors.minlength">username is short</span>
+    </mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>firstname</mat-label>
+    <input matInput [(ngModel)]="user.firstname"
+           name="firstname"
+           id ="form-input-firstname">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>lastname</mat-label>
+    <input matInput [(ngModel)]="user.lastname"
+           name="lastname"
+
+           id ="form-input-lastname">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>email</mat-label>
+    <input matInput [(ngModel)]="user.email"
+           name="email"
+           id ="form-input-email"
+           type="email" >
+  </mat-form-field>
+  <br>
+  <mat-form-field >
+    <mat-label>Role</mat-label>
+    <mat-select>
+      <mat-option value="Admin">Admin</mat-option>
+      <mat-option value="Responsable">Responsable</mat-option>
+      <mat-option value="Developpeur">Developpeur</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <button [disabled]="userForm.invalid"  mat-raised-button  type="submit" color="primary">Add User</button>
+
+
+  <br>
+
+</form>
