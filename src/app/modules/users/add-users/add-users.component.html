@@ -1,7 +1,5 @@
 <p>Add user </p>
-<form #userForm="ngForm">
-
-
+<form #userForm="ngForm" (submit)="submit()">
   <mat-form-field appearance="fill">
     <mat-label>Username</mat-label>
     <input matInput [(ngModel)]="user.username"
@@ -34,7 +32,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>firstname</mat-label>
-    <input matInput [(ngModel)]="user.firstname"
+    <input matInput [(ngModel)]="user.firstName"
            name="firstname"
            id ="form-input-firstname">
   </mat-form-field>
@@ -42,7 +40,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>lastname</mat-label>
-    <input matInput [(ngModel)]="user.lastname"
+    <input matInput [(ngModel)]="user.lastName"
            name="lastname"
 
            id ="form-input-lastname">
@@ -59,10 +57,10 @@
   <br>
   <mat-form-field >
     <mat-label>Role</mat-label>
-    <mat-select>
-      <mat-option value="Admin">Admin</mat-option>
-      <mat-option value="Responsable">Responsable</mat-option>
-      <mat-option value="Developpeur">Developpeur</mat-option>
+    <mat-select [(ngModel)]="user.role" name="role">
+      <mat-option value="ADMIN">Admin</mat-option>
+      <mat-option value="PROJECT_MANAGER">Responsable</mat-option>
+      <mat-option value="DEVELOPER">Developpeur</mat-option>
     </mat-select>
   </mat-form-field>
   <br>

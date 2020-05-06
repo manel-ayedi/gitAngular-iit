@@ -6,8 +6,9 @@ import { UsersComponent } from './users.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { AddUsersComponent } from './add-users/add-users.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
-import {SharedModule} from "../../shared/shared.module";
-import {MatSelectModule} from "@angular/material/select";
+import {SharedModule} from '../../shared/shared.module';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {MatSelectModule} from "@angular/material/select";
     CommonModule,
     UsersRoutingModule,
     SharedModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule
   ]
 })
 export class UsersModule { }
