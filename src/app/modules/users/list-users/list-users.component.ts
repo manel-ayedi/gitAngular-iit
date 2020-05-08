@@ -9,7 +9,7 @@ import {UsersService} from '../../../core/services/user/user.service' ;
 })
 export class ListUsersComponent implements OnInit {
   private users: User [];
-  displayedColumns: string[] = ['username', 'firstname', 'lastname', 'email', 'role'];
+  displayedColumns: string[] = ['username', 'firstname', 'lastname', 'email', 'role', 'action'];
   constructor(private userService: UsersService) { }
 
   ngOnInit() {
@@ -17,6 +17,12 @@ export class ListUsersComponent implements OnInit {
       this.users = users;
       console.log(this.users);
     });
+  }
+  editUser(){
+    console.log("edit button works");
+  }
+  deleteUser(){
+    console.log("delete button works");
   }
 
 }

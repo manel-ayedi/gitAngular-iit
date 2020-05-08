@@ -9,6 +9,7 @@ import { ViewUsersComponent } from './view-users/view-users.component';
 import {SharedModule} from '../../shared/shared.module';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {MatTableModule} from '@angular/material/table';
     UsersRoutingModule,
     SharedModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ]
 })
 export class UsersModule { }
