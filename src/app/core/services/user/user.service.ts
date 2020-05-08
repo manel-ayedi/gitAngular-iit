@@ -15,6 +15,7 @@ export class UsersService {
 
   constructor(private httpClient: HttpClient) { }
   public addUser(user: User): Observable<User> {
+    // @ts-ignore
     return this.httpClient.post<User>(`${environment.urlBackend}users/`, user);
   }
 
@@ -23,6 +24,7 @@ export class UsersService {
   //  const deleteItem = this.user.splice(index, 1);
  // }
   public getAllUser(): Observable<User[]> {
+    // @ts-ignore
     return this.httpClient.get<any>(`${environment.urlBackend}users`)
     .pipe(map(result => result._embedded.users));
   }
