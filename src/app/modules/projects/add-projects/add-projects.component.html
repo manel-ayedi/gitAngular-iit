@@ -1,55 +1,50 @@
 <p>add-projects works!</p>
-<form #projectForm="ngForm"   (submit)="submit()">
+<form #projectForm="ngForm" (submit)="submit()">
 
   <mat-form-field appearance="fill">
 
     <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="project.name"
-           formControlName="name"
+    <input matInput [(ngModel)]="project.title" name="title"
            required
-           id ="form-input-name">
+           id="form-input-name">
 
 
   </mat-form-field>
 
-    <br>
+  <br>
 
   <mat-form-field appearance="fill">
     <mat-label>Description</mat-label>
-      <input matInput [(ngModel)]="project.description"
-             formControlName="description"
-             id ="form-input-description">
+    <input matInput [(ngModel)]="project.description"
+           name="description"
+           id="form-input-description">
   </mat-form-field>
 
-    <br>
+  <br>
 
   <mat-form-field appearance="fill">
-      <mat-label>Responsable</mat-label>
-      <mat-select [(ngModel)]="project.responsable.username"
-           formControlName="Responsable"
-           id ="form-input-Responsable">
-        <mat-option *ngFor="let responsable of responsables" [value]="responsable">{{responsable.username}}</mat-option>
-      </mat-select>
+    <mat-label>Responsable</mat-label>
+    <mat-select [(ngModel)]="project.manager"
+                name="manager"
+                id="form-input-Responsable">
+      <mat-option *ngFor="let responsable of responsables"
+                  [value]="'/users/'+responsable.id">{{responsable.username}}</mat-option>
+    </mat-select>
 
   </mat-form-field>
 
-    <br>
+  <br>
 
   <mat-form-field appearance="fill">
     <mat-label>Team</mat-label>
-    <mat-select [(ngModel)]="project.team"
-           formControlName="team"
-           id ="form-input-team" multiple >
-      <mat-option *ngFor="let developer of developers" [value]="developer">{{developer.username}}</mat-option>
+    <mat-select [(ngModel)]="project.developers" name="developers"
+                id="form-input-team" multiple>
+      <mat-option *ngFor="let developer of developers" [value]="'/users/'+developer.id">{{developer.username}}</mat-option>
 
     </mat-select>
   </mat-form-field>
 
-    <br>
+  <br>
 
-  <button [disabled]="projectForm.invalid"  mat-raised-button  type="submit" color="primary">Add Project</button>
-
-
-
-
+  <button [disabled]="projectForm.invalid" mat-raised-button type="submit" color="primary">Add Project</button>
 </form>

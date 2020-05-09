@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ProjectService} from "../../../core/services/project/project.service";
-import {fromEvent} from "rxjs";
-import {Project} from "../../../core/models/project";
-import {User} from "../../../core/models/user";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder} from '@angular/forms';
+import {ProjectService} from '../../../core/services/project/project.service';
+import {fromEvent} from 'rxjs';
+import {Project} from '../../../core/models/project';
+import {User} from '../../../core/models/user';
+import {UsersService} from '../../../core/services/user/user.service';
 
 
 @Component({
@@ -12,11 +13,11 @@ import {User} from "../../../core/models/user";
   styleUrls: ['./add-projects.component.css']
 })
 export class AddProjectsComponent implements OnInit {
-  private  responsables = ['ali','mourad','amir'].map(this.createResponsable);
-  private  developers = ['amal','melek','amir'].map(this.createDeveloper);
+  private responsables = [];
+  private developers = [];
 
 
-  constructor ( private formBuilder: FormBuilder , private projectService: ProjectService) {
+  constructor(private projectService: ProjectService, private userService: UsersService) {
   }
 
   private project: Project = new Project(
@@ -25,23 +26,16 @@ export class AddProjectsComponent implements OnInit {
     null,
     []
   );
-  // @ts-ignore
-
 
   ngOnInit() {
-    const observable = fromEvent(document, 'click');
-    observable.subscribe(event => console.log(event));
-  }
-  public submit() {
-    // this.subjectService.subject.next(this.user.username);
-    this.projectService.addProject(this.project).subscribe();
+    this.userService.getAllUser().subscribe(users => {
+      this.responsables = users.filter(user => user.role === 'PROJECT_MANAGER');
+      this.developers = users.filter(user => user.role === 'DEVELOPER');
+    });
   }
 
-  createResponsable (name){
-    return new User(name,name,name,name,name,'responsable' );
-  }
-  createDeveloper (name){
-    return new User(name,name,name,name,name,'Developer' );
+  public submit() {
+    this.projectService.addProject(this.project).subscribe();
   }
 
 

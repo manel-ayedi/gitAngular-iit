@@ -7,14 +7,16 @@ import {SharedModule} from "../../shared/shared.module";
 import { AddProjectsComponent } from './add-projects/add-projects.component';
 import { ListProjectsComponent } from './list-projects/list-projects.component';
 import { ViewProjectsComponent } from './view-projects/view-projects.component';
+import {MatIconModule} from '@angular/material';
 
 
 @NgModule({
   declarations: [ProjectsComponent, AddProjectsComponent, ListProjectsComponent, ViewProjectsComponent],
-  imports: [
-    CommonModule,
-    ProjectsRoutingModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        ProjectsRoutingModule,
+        SharedModule,
+        MatIconModule
+    ]
 })
 export class ProjectsModule { }

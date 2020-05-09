@@ -13,16 +13,18 @@ export class ListUsersComponent implements OnInit {
   constructor(private userService: UsersService) { }
 
   ngOnInit() {
+    this.loadUsers();
+  }
+
+
+  loadUsers() {
     this.userService.getAllUser().subscribe(users => {
       this.users = users;
-      console.log(this.users);
     });
   }
-  editUser(){
-    console.log("edit button works");
-  }
-  deleteUser(){
-    console.log("delete button works");
+
+  deleteUser(id: string) {
+    this.userService.deleteUser(id).subscribe(() => this.loadUsers());
   }
 
 }

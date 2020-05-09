@@ -9,11 +9,12 @@ import { ViewUsersComponent } from './view-users/view-users.component';
 import {SharedModule} from '../../shared/shared.module';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
-import {MatIconModule} from "@angular/material/icon";
+import {MatIconModule} from '@angular/material/icon';
+import { UsernameExistDirective } from './username-exist.directive';
 
 
 @NgModule({
-  declarations: [UsersComponent, ListUsersComponent, AddUsersComponent, ViewUsersComponent],
+  declarations: [UsersComponent, ListUsersComponent, AddUsersComponent, ViewUsersComponent, UsernameExistDirective],
   imports: [
     CommonModule,
     UsersRoutingModule,

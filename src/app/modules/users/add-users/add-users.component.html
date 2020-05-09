@@ -1,20 +1,24 @@
-<p>Add user </p>
+<p *ngIf="id">Edit user {{user.username}} </p>
+<p *ngIf="!id">Add user </p>
 <form #userForm="ngForm"   (submit)="submit()">
   <mat-form-field appearance="fill">
     <mat-label>Username</mat-label>
     <input matInput [(ngModel)]="user.username"
            name="username"
            required
+           appUsernameExist
+           [disabled]="id"
            #usernameNgModel="ngModel"
            id ="form-input-username">
     <mat-error *ngIf="usernameNgModel.invalid">
       <span *ngIf="usernameNgModel.errors.required">username is required</span>
+      <span *ngIf="usernameNgModel.errors.usernameExist">username exist</span>
     </mat-error>
   </mat-form-field>
   <br>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Password</mat-label>
+  <mat-form-field appearance="fill" *ngIf="!id">
+    <mat-label >Password</mat-label>
     <input matInput [(ngModel)]="user.password"
            name="password"
            required
@@ -65,7 +69,10 @@
   </mat-form-field>
 
   <br>
-  <button [disabled]="userForm.invalid"  mat-raised-button  type="submit" color="primary">Add User</button>
+  <button [disabled]="userForm.invalid"  mat-raised-button  type="submit" color="primary">
+    <span *ngIf="!id">Add User</span>
+    <span *ngIf="id">Edit User</span>
+  </button>
 
 
   <br>

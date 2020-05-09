@@ -19,5 +19,11 @@ export class ListProjectsComponent implements OnInit {
       console.log(this.projects);
     });
   }
+  editUser(){
+    console.log("edit button works");
+  }
+  deleteUser(){
+    console.log("delete button works");
+  }
 
 }

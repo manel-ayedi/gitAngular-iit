@@ -9,7 +9,8 @@ import {ViewUsersComponent} from './view-users/view-users.component';
 const routes: Routes = [{ path: '', component: UsersComponent },
   { path: 'list', component: ListUsersComponent },
   { path: 'add', component: AddUsersComponent },
-  { path: 'view/:id', component: ViewUsersComponent }];
+  { path: 'view/:id', component: ViewUsersComponent },
+  { path: 'edit/:id', component: AddUsersComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
