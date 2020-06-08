@@ -55,6 +55,7 @@
     <mat-label>email</mat-label>
     <input matInput [(ngModel)]="user.email"
            name="email"
+           pattern="[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\.[a-z]{2,3}"
            id ="form-input-email"
            type="email" >
   </mat-form-field>
@@ -73,8 +74,5 @@
     <span *ngIf="!id">Add User</span>
     <span *ngIf="id">Edit User</span>
   </button>
-
-
   <br>
-
 </form>

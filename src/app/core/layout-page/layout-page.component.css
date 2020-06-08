@@ -4,6 +4,7 @@
 
 .sidenav {
   width: 200px;
+
 }
 
 .sidenav .mat-toolbar {
@@ -14,4 +15,15 @@
   position: sticky;
   top: 0;
   z-index: 1;
+}
+.mat-drawer-container {
+  background-image: url("https://torange.biz/photofxnew/1/HD/mirror-macro-blurring-top-bottom-sky-clear-1049.jpg ");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%
+}
+.menusside {
+  background-image: url("https://www.lebigdata.fr/wp-content/uploads/2017/06/business-intelligence-2.png ");
 }

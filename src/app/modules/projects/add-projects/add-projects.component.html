@@ -1,9 +1,10 @@
-<p>add-projects works!</p>
+<p *ngIf="id">Edit project {{project.title}} </p>
+<p *ngIf="!id">Add project </p>
 <form #projectForm="ngForm" (submit)="submit()">
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" width="200">
 
-    <mat-label>Name</mat-label>
+    <mat-label>Title</mat-label>
     <input matInput [(ngModel)]="project.title" name="title"
            required
            id="form-input-name">
@@ -13,19 +14,21 @@
 
   <br>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill"width="200">
     <mat-label>Description</mat-label>
     <input matInput [(ngModel)]="project.description"
            name="description"
+           required
            id="form-input-description">
   </mat-form-field>
 
   <br>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" width="200">
     <mat-label>Responsable</mat-label>
     <mat-select [(ngModel)]="project.manager"
                 name="manager"
+                required
                 id="form-input-Responsable">
       <mat-option *ngFor="let responsable of responsables"
                   [value]="'/users/'+responsable.id">{{responsable.username}}</mat-option>
@@ -36,15 +39,21 @@
   <br>
 
   <mat-form-field appearance="fill">
-    <mat-label>Team</mat-label>
+    <mat-label >Team</mat-label>
     <mat-select [(ngModel)]="project.developers" name="developers"
                 id="form-input-team" multiple>
-      <mat-option *ngFor="let developer of developers" [value]="'/users/'+developer.id">{{developer.username}}</mat-option>
+      <mat-option *ngFor="let developer of developers" [value]="'/projects/'+developer.id">{{developer.username}}</mat-option>
 
     </mat-select>
   </mat-form-field>
 
   <br>
+  <br>
+  <button [disabled]="projectForm.invalid"  mat-raised-button  type="submit" color="primary">
+    <span *ngIf="!id">Add Project</span>
+    <span *ngIf="id">Edit Project</span>
+  </button>
+  <br>
 
-  <button [disabled]="projectForm.invalid" mat-raised-button type="submit" color="primary">Add Project</button>
+  <!--<button [disabled]="projectForm.invalid" mat-raised-button type="submit" color="primary">Add Project</button> -->
 </form>

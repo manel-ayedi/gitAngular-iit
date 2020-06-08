@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ProjectService} from "../../../core/services/project/project.service";
-import {Project} from "../../../core/models/project";
-
+import {ProjectService} from '../../../core/services/project/project.service';
+import {Project} from '../../../core/models/project';
+import {User} from '../../../core/models/user';
 @Component({
   selector: 'app-list-projects',
   templateUrl: './list-projects.component.html',
@@ -9,21 +9,29 @@ import {Project} from "../../../core/models/project";
 })
 export class ListProjectsComponent implements OnInit {
 
-  private projects: Project [];
-  displayedColumns: string[] = ['name', 'description', 'responsable', 'team'];
-  constructor(private projectService: ProjectService) { }
+  private projects: User[];
+  displayedColumns: string[] = ['name', 'description', 'responsable', 'team', 'action'];
+
+  constructor(private projectService: ProjectService) {
+  }
 
   ngOnInit() {
+    // this.projectService.getAllProject().subscribe(projects => {
+    //  this.projects = projects;
+    //  console.log(this.projects);
+    // });
+    this.loadProjects();
+  }
+
+  loadProjects() {
     this.projectService.getAllProject().subscribe(projects => {
       this.projects = projects;
-      console.log(this.projects);
     });
   }
-  editUser(){
-    console.log("edit button works");
-  }
-  deleteUser(){
-    console.log("delete button works");
+
+  deleteProject(id: string) {
+    this.projectService.deleteProject(id).subscribe(() => this.loadProjects());
   }
 
 }
+

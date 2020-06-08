@@ -11,17 +11,21 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import { UsernameExistDirective } from './username-exist.directive';
+import {MatDialogModule, MatSnackBarModule} from '@angular/material';
 
 
 @NgModule({
-  declarations: [UsersComponent, ListUsersComponent, AddUsersComponent, ViewUsersComponent, UsernameExistDirective],
+  declarations: [UsersComponent, ListUsersComponent, AddUsersComponent, ViewUsersComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
     SharedModule,
     MatSelectModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    SharedModule
   ]
 })
 export class UsersModule { }
